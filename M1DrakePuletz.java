@@ -30,6 +30,7 @@ USE THESE 3 WORDS TO NAME ALL VARIABLES FOR 3 POOL BALLS.
   float left,right, top, bottom;
   float middle= left + (right-left) / 2;
   int score = 0;
+  int frameNumber=0;
   
   String title=  "CST112 MIDTERM EXAM";
   String news=   "Click any ball to reset it to right half of table.  (r resets all.)";
@@ -74,6 +75,8 @@ void reset(){
   
   mousedx=0;
   mousedy=0;
+  
+ mouse();
  }
 
 void draw(){
@@ -86,6 +89,7 @@ void draw(){
   show();
   messages();
   mouse();
+  frameNumber= frameNumber+1;
  }
 void table(float left, float top, float right, float bottom){
   fill(r,g,b);
@@ -148,16 +152,31 @@ void messages(){        //message placement
 }
 
 void mouse(){
+
+  if( frameNumber/30 % 2 > 0) {
+  line(mousex-20,mousey+8,mousex-15,mousey+20);//leg 1
+  line(mousex-15,mousey+8,mousex-10,mousey+20);//leg 2
+  line(mousex+10,mousey+8,mousex+ 5,mousey+20);//leg 3
+  line(mousex+ 5,mousey+8,mousex- 5,mousey+20);//leg 4
+  
+  }else{
+  line(mousex-20,mousey+8,mousex-25,mousey+20);//leg 1
+  line(mousex-15,mousey+8,mousex-20,mousey+20);//leg 2
+  line(mousex+10,mousey+8,mousex- 15,mousey+20);//leg 3
+  line(mousex+ 5,mousey+8,mousex   ,mousey+20);//leg 4
+  }
+  if( mousex>width){
+    mousex = -10;
+  }
+
   mousex= mousex+ mousedx;
   mousey= mousey+ mousedy;
   ellipse(mousex,mousey,50,25);
   ellipse(mousex+25,mousey-10,20,15);
-  strokeWeight(2);
-  line(mousex-20,mousey+8,mousex-25,mousey+20);
-  line(mousex-15,mousey+8,mousex-20,mousey+20);
-  line(mousex+10,mousey+8,mousex+ 5,mousey+20);
-  line(mousex+ 5,mousey+8,mousex   ,mousey+20);
-  strokeWeight(1);
+  //line(mousex-20,mousey+8,mousex-25,mousey+20);
+ // line(mousex-15,mousey+8,mousex-20,mousey+20);
+ // line(mousex+10,mousey+8,mousex+ 5,mousey+20);
+  //line(mousex+ 5,mousey+8,mousex   ,mousey+20);
 }
 void keyPressed(){
   if (key == 'r'){  // reset all
@@ -192,3 +211,4 @@ void keyPressed(){
     mousedx=3;
   }
 }
+
