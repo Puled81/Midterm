@@ -38,7 +38,7 @@ USE THESE 3 WORDS TO NAME ALL VARIABLES FOR 3 POOL BALLS.
   String author=  "Drake";
   
 void setup() {
-  size(640,480);
+  size(700,500);
   left=50;
   right= width-50;
   top=100;
@@ -157,6 +157,9 @@ void messages(){        //message placement
   text( title, 20, 20 );
   text( news, 20, 40 );
   text( author, 50, height-5 );
+  text("Press 'M' to start the mouse",450,10);
+  text("Press 'P' to change table color to pink",450,20);
+  text("Press 'W' to remove the wall",450,30);
 }
 
 void mouse(){
