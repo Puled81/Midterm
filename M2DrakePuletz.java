@@ -75,10 +75,9 @@ void reset(){
   g= 205;
   b= 50;
   
+  mousex=10;
   mousedx=0;
   mousedy=0;
-  
- mouse();
  }
 
 void draw(){
